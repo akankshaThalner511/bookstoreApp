@@ -1,0 +1,47 @@
+<header class="app-header">
+  <h1>📚 Book Store Application</h1>
+</header>
+
+<div class="main-container">
+  <div class="form-section">
+
+    <form (submit)="onInsertClick(); $event.preventDefault();">
+      <label>Book ID:</label>
+      <input type="text" [(ngModel)]="book.bookId" name="bookId" /><br />
+
+      <label>Book Name:</label>
+      <input type="text" [(ngModel)]="book.bookName" name="bookName" /><br />
+
+      <label>Book Price:</label>
+      <input type="text" [(ngModel)]="book.bookPrice" name="bookPrice" /><br />
+
+      <input type="submit" value="Save Book" /><br />
+    </form>
+
+    <div class="msg" *ngIf="msg">
+      {{ msg }}
+    </div>
+  </div>
+
+  <div class="table-section">
+    <h3>📖 Book Details</h3>
+    <input type="button" value="📥 Get Book Data" (click)="getData()" class="get-data-btn" />
+    <table>
+      <thead>
+        <tr>
+          <th>Book Id</th>
+          <th>Book Name</th>
+          <th>Book Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{ book.bookId }}</td>
+          <td>{{ book.bookName }}</td>
+          <td>{{ book.bookPrice }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
